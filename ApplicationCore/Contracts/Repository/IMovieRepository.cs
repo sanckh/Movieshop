@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ApplicationCore.Entities;
 
 namespace ApplicationCore.Contracts.Repository
 {
-    public interface IMovieRepository<T> where T : class
+    public interface IMovieRepository : IRepository<Movie>
     {
-        int Insert(T entity);
-        int Update(int id);
-        int Delete(int id);
-        IEnumerable<T> GetAll();
-        T Get(int id);
+        IEnumerable<Movie> Get30HighestRatedMovies();
+        IEnumerable<Movie> GetByGenre(int id);
     }
 }

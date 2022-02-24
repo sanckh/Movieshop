@@ -11,6 +11,7 @@ namespace ApplicationCore.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public List<MovieGenre> MoviesOfGenre { get; set; }
 
     }
 }

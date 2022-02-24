@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ApplicationCore.Entities;
 
 namespace ApplicationCore.Contracts.Repository
 {
-    public interface IUserRepository<T> where T : class
+    public interface IUserRepository: IRepository<User>
     {
-        int Insert(T entity);
-        int Update(int id);
-        int Delete(int id);
-        IEnumerable<T> GetAll();
-        T Get(int id);
+        
     }
 }

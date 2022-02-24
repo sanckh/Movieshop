@@ -1,4 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ApplicationCore.Contracts.Repository;
+using Infrastructure.Repository;
+using ApplicationCore.Entities;
 
 
 namespace Movieshop.API.Controller
@@ -7,36 +10,38 @@ namespace Movieshop.API.Controller
     [ApiController]
     public class MovieController : ControllerBase
     {
-    //    List<MovieResponseModel> lst;
-    //    public MovieController()
-    //    {
-    //        lst = new List<MovieResponseModel>
-    //        {
-    //            new MovieResponseModel{Id = 1, Name = "Die Hard", Ratings = 3.5f},
-    //            new MovieResponseModel{Id = 2, Name = "Fast and Furious", Ratings = 4},
-    //            new MovieResponseModel{Id = 3, Name = "Hobbit", Ratings = 4.5f},
-    //        };
-    //    }
+        IMovieRepository _movieRepository;
+        public MovieController(IMovieRepository movieRepository)
+        {
+            _movieRepository = movieRepository;
+        }
 
-    //    [Route("list")]
-    //    [HttpGet]
-    //    public IActionResult Get()
-    //    {
-    //        return Ok(lst);
-    //    }
-    //    [Route("get/{id:min(1):max(100)}")]
-    //    public IActionResult Get(int id)
-    //    {
-    //        if (id < 1)
-    //            return BadRequest();
-    //        return Ok(lst.Where(x => x.Id == id).FirstOrDefault());
-    //    }
-    //    [Route("name/{name}")]
-    //    public IActionResult Get(string name)
-    //    {
-    //        if (string.IsNullOrEmpty(name))
-    //            return NoContent();
-    //        return Ok(lst.Where(x => x.Name == name).FirstOrDefault());
-    //    }
+        [Route("{id}/name/{name}")]
+        public IActionResult GetById(int id, string name)
+        {
+            return Ok($"{id} - {name}");
+        }
+
+        [Route("byquery")]
+        public IActionResult GetByQuery(int id, string name)
+        {
+            return Ok(name);
+        }
+
+        [Route("byBody")]
+        public IActionResult GetData(Genre g)
+        {
+            string str = "";
+            str += g.Name;
+
+            return Ok("Result = " + str);
+        }
+
+        [Route("byboth")]
+        public IActionResult GetByBoth([FromQuery] int rating, [FromForm] Genre g, [FromHeader] string jwt)
+        {
+            return Ok(rating + " " + g.Name + " " + jwt);
+        }
     }
 }
+

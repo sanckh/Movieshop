@@ -14,5 +14,6 @@ namespace ApplicationCore.Contracts.Repository
         int Delete(int id);
         IEnumerable<T> GetAll();
         T GetByCondition(Expression<Predicate<T>> filter);
+        T GetById(int id);
     }
 }

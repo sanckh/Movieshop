@@ -1,37 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-using ApplicationCore.Entities;
 using ApplicationCore.Contracts.Repository;
-using System.Linq.Expressions;
 
 namespace Infrastructure.Repository
 {
-    public class PurchaseRepository : BaseRepository<PurchaseRepository>, IPurchaseRepository
+    public class BaseRepository<T> : IRepository<T> where T : class
     {
-        public Purchase GetByCondition(Expression<Predicate<Purchase>> filter)
+        public int Delete(int id)
         {
             throw new NotImplementedException();
         }
 
-        public int Insert(Purchase entity)
+        public IEnumerable<T> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public int Update(Purchase entity)
+        public T GetByCondition(Expression<Predicate<T>> filter)
         {
             throw new NotImplementedException();
         }
 
-        IEnumerable<Purchase> IRepository<Purchase>.GetAll()
+        public T GetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        Purchase IRepository<Purchase>.GetById(int id)
+        public int Insert(T entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int Update(T entity)
         {
             throw new NotImplementedException();
         }
