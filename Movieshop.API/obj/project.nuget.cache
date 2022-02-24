@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "WICcjJTxHgnoj5RJSusVuy2LmQOTnCPOxf9PPXrTxnt3b88qwK6OAWN5HnbEv9oAymHP0wyGrnisc5wA8JBuPg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Daddy\\source\\repos\\Movieshop\\Movieshop.API\\Movieshop.API.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Daddy\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512"
+  ],
+  "logs": []
+}

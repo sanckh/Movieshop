@@ -1,0 +1,123 @@
+{
+  "version": 3,
+  "targets": {
+    "net6.0": {
+      "Dapper/2.0.123": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0/Dapper.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Dapper.dll": {}
+        }
+      },
+      "Movieshop.API/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Dapper": "2.0.123"
+        },
+        "compile": {
+          "bin/placeholder/Movieshop.API.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Movieshop.API.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      }
+    }
+  },
+  "libraries": {
+    "Dapper/2.0.123": {
+      "sha512": "RDFF4rBLLmbpi6pwkY7q/M6UXHRJEOerplDGE5jwEkP/JGJnBauAClYavNKJPW1yOTWRPIyfj4is3EaJxQXILQ==",
+      "type": "package",
+      "path": "dapper/2.0.123",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Dapper.png",
+        "dapper.2.0.123.nupkg.sha512",
+        "dapper.nuspec",
+        "lib/net461/Dapper.dll",
+        "lib/net461/Dapper.xml",
+        "lib/net5.0/Dapper.dll",
+        "lib/net5.0/Dapper.xml",
+        "lib/netstandard2.0/Dapper.dll",
+        "lib/netstandard2.0/Dapper.xml"
+      ]
+    },
+    "Movieshop.API/1.0.0": {
+      "type": "project",
+      "path": "../Movieshop.API/Movieshop.API.csproj",
+      "msbuildProject": "../Movieshop.API/Movieshop.API.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net6.0": [
+      "Movieshop.API >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Daddy\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\Daddy\\source\\repos\\Movieshop\\ApplicationCore\\ApplicationCore.csproj",
+      "projectName": "ApplicationCore",
+      "projectPath": "C:\\Users\\Daddy\\source\\repos\\Movieshop\\ApplicationCore\\ApplicationCore.csproj",
+      "packagesPath": "C:\\Users\\Daddy\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Daddy\\source\\repos\\Movieshop\\ApplicationCore\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\Daddy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net6.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "projectReferences": {
+            "C:\\Users\\Daddy\\source\\repos\\Movieshop\\Movieshop.API\\Movieshop.API.csproj": {
+              "projectPath": "C:\\Users\\Daddy\\source\\repos\\Movieshop\\Movieshop.API\\Movieshop.API.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net6.0": {
+        "targetAlias": "net6.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
