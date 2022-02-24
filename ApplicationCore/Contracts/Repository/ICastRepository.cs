@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace ApplicationCore.Contracts.Repository
 {
-    internal interface ICastRepository
+    public interface ICastRepository<T> where T : class
     {
+        int Insert(T entity);
+        int Update(int id);
+        int Delete(int id);
+        IEnumerable<T> GetAll();
+        T Get(int id);
     }
 }

@@ -1,6 +1,12 @@
-﻿namespace Movieshop.API.ResponseModel
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ApplicationCore.Entities
 {
-    public class AccountResponseModel
+    public class User
     {
         public int Id { get; set; }
         public string? FirstName { get; set; }
@@ -15,5 +21,9 @@
         public DateTime? LastLoginDateTime { get; set; }
         public bool? IsLocked { get; set; }
         public int? AccessFailedCount { get; set; }
+        public List<Review> UserReview { get; set; }
+        public List<Favorite> UserFavorite { get; set; }
+        public List<Purchase> UserPurchase { get; set; }
+        public List<UserRole> UserName { get; set; }
     }
 }

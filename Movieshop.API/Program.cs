@@ -1,6 +1,12 @@
-var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
+using Movieshop.API;
 
-app.MapGet("/", () => "Hello World!");
+CreateHostBuilder().Build().Run();
 
-app.Run();
+static IHostBuilder CreateHostBuilder()
+{
+    return Host.CreateDefaultBuilder().ConfigureWebHostDefaults(webhost => {
+
+        webhost.UseStartup<Startup>();
+
+    });
+}

@@ -1,10 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "lwaxs4c1dJbfq1Bn54leQfRuBLRKK5Qj7N7vI3ZyAh2/xTC7QnR5J4ahqDuGvbXz3D5ire+yEdTWtlfIbjbp2Q==",
+  "dgSpecHash": "YZMKCbxnVb83ZNUo5STbA70aoBRW8XQAkJBQHjWUWgDjvnDvx2fBHVmOHDpB4+KSejL8/wki91NvpcP3pfWp3A==",
   "success": true,
   "projectFilePath": "C:\\Users\\Daddy\\source\\repos\\Movieshop\\ApplicationCore\\ApplicationCore.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\Daddy\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512"
-  ],
+  "expectedPackageFiles": [],
   "logs": []
 }
