@@ -3,17 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
 
-namespace ApplicationCore.Entities
+namespace ApplicationCore.Models
 {
-    public class Genre
+    public class GenreModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
-
-        //navigational
-        public List<MovieGenre> MoviesOfGenre { get; set; }
-
     }
 }

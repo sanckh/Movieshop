@@ -1,4 +1,9 @@
-﻿using Infrastructure.Data;
+﻿using ApplicationCore.Contracts.Repository;
+using ApplicationCore.Contracts.Services;
+using ApplicationCore.Entities;
+using Infrastructure.Data;
+using Infrastructure.Repository;
+using Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace Movieshop.API
@@ -16,9 +21,11 @@ namespace Movieshop.API
             service.AddDbContext<MovieshopDBContext>(option => {
                 option.UseSqlServer(Configuration.GetConnectionString("MovieshopDB"));
                 });
-            service.AddControllers();
+            //service.AddControllers();
             //service.AddControllersWithViews();
             //service.AddMvc();
+            service.AddScoped<IGenreRepository, GenreRepository>();
+            service.AddScoped<IGenreService, GenreService>();
 
         }
 

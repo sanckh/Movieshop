@@ -13,7 +13,7 @@ namespace ApplicationCore.Contracts.Repository
         int Update(T entity);
         int Delete(int id);
         IEnumerable<T> GetAll();
-        T GetByCondition(Expression<Predicate<T>> filter);
+        IEnumerable<T> GetByCondition(Expression<Func<T, bool>> filter);
         T GetById(int id);
     }
 }
