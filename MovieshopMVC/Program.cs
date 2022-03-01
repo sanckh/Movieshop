@@ -23,12 +23,6 @@ builder.Services.AddDbContext<MovieshopDBContext>(option =>
 
 
 
-
-
-
-
-
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

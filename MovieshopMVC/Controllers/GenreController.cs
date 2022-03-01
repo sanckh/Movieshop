@@ -17,6 +17,20 @@ namespace MovieshopMVC.Controllers
             var data = _genreService.GetAllGenres();
             return View(data);
         }
-
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Create(GenreModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                _genreService.InsertGenre(model);
+                return RedirectToAction("Index");
+            }
+            return View(model);
+        }
     }
 }

@@ -3,14 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ApplicationCore.Models
 {
     public class MovieCreateRequestModel
     {
         public int Id { get; set; }
+        [Column("Title")]
+        [Required(ErrorMessage = "Title is required")]
         public string Title { get; set; }
+        [Required(ErrorMessage = "Overview is required")]
         public string Overview { get; set; }
+      
         public string Tagline { get; set; }
         public decimal? Revenue { get; set; }
         public decimal? Budget { get; set; }
@@ -22,6 +28,6 @@ namespace ApplicationCore.Models
         public DateTime? ReleaseDate { get; set; }
         public int? RunTime { get; set; }
         public decimal? Price { get; set; }
-        public List<GenreModel> Genres { get; set; }
+        public virtual List<GenreModel> Genres { get; set; } = null;
     }
 }

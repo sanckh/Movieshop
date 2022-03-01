@@ -6,8 +6,6 @@ using System.Threading.Tasks;
 using ApplicationCore.Entities;
 using ApplicationCore.Contracts.Repository;
 using System.Linq.Expressions;
-using ApplicationCore.Entities;
-using ApplicationCore.Contracts.Repository;
 using Infrastructure.Data;
 
 namespace Infrastructure.Repository

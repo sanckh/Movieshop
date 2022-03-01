@@ -8,7 +8,6 @@ using ApplicationCore.Contracts.Repository;
 using ApplicationCore.Models;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
-using ApplicationCore.Models;
 using System.Linq.Expressions;
 
 namespace Infrastructure.Repository
