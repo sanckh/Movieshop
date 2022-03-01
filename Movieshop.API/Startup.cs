@@ -18,14 +18,24 @@ namespace Movieshop.API
         // Dependency Injection
         public void ConfigureServices(IServiceCollection service)
         {
-            service.AddDbContext<MovieshopDBContext>(option => {
-                option.UseSqlServer(Configuration.GetConnectionString("MovieshopDB"));
-                });
-            //service.AddControllers();
+            service.AddControllers();
             //service.AddControllersWithViews();
             //service.AddMvc();
+
+            //Repositories
             service.AddScoped<IGenreRepository, GenreRepository>();
+            service.AddScoped<IMovieRepository, MovieRepository>();
+            service.AddScoped<ICastRepository, CastRepository>();
+
+            //Services
             service.AddScoped<IGenreService, GenreService>();
+            service.AddScoped<IMovieService, MovieService>();
+            service.AddScoped<ICastService, CastService>();
+
+            service.AddDbContext<MovieshopDBContext>(option =>
+            {
+                option.UseSqlServer(Configuration.GetConnectionString("MovieShopDb"));
+            });
 
         }
 

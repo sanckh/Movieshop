@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ApplicationCore.Contracts.Services;
 
 
 namespace Movieshop.API.Controller
@@ -8,14 +9,26 @@ namespace Movieshop.API.Controller
     [ApiController]
     public class CastController : ControllerBase
     {
-
-        [Route("{id:int}")]
-        public IActionResult Get(int id)
+        private readonly ICastService _castService;
+        public CastController(ICastService castService)
         {
-            //if (false)
-            //    return NotFound();
+            _castService = castService;
+        }
 
-            return Ok();
+        [HttpGet]
+        [Route("{id:int}")]
+        public IActionResult GetCast(int id)
+        {
+            var cast = _castService.GetAllCast(id);
+
+            if (cast != null)
+            {
+                return Ok(cast);
+            }
+            else
+            {
+                return NotFound();
+            }
         }
     }
 }

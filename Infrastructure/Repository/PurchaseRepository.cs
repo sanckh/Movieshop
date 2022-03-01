@@ -6,11 +6,16 @@ using System.Threading.Tasks;
 using ApplicationCore.Entities;
 using ApplicationCore.Contracts.Repository;
 using System.Linq.Expressions;
+using Infrastructure.Data;
 
 namespace Infrastructure.Repository
 {
-    public class PurchaseRepository : BaseRepository<PurchaseRepository>, IPurchaseRepository
+    public class PurchaseRepository : BaseRepository<Purchase>, IPurchaseRepository
     {
+        public PurchaseRepository(MovieshopDBContext _con) : base(_con)
+        {
+
+        }
         public Purchase GetByCondition(Expression<Predicate<Purchase>> filter)
         {
             throw new NotImplementedException();

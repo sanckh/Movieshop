@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ApplicationCore.Models;
 
 
 namespace ApplicationCore.Contracts.Services
@@ -14,5 +15,6 @@ namespace ApplicationCore.Contracts.Services
         //int DeleteCast(int id);
         //IEnumerable<Cast> GetAllCasts();
         //Cast GetCast(int id);
+        CastResponseModel GetAllCast(int id);
     }
 }

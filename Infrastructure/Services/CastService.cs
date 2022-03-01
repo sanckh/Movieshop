@@ -3,36 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ApplicationCore.Contracts.Repository;
 using ApplicationCore.Contracts.Services;
-
+using ApplicationCore.Models;
 
 namespace Infrastructure.Services
 {
-    public class CastService 
+    public class CastService : ICastService
     {
-        //public int DeleteCast(int id)
-        //{
-        //    throw new NotImplementedException();
-        //}
+        private readonly ICastRepository _castRepository;
+        public CastService(ICastRepository castRepository)
+        {
+            _castRepository = castRepository;
+        }
+        public CastResponseModel GetAllCast(int id)
+        {
+            var castDetail = _castRepository.GetById(id);
 
-        //public IEnumerable<Cast> GetAllCasts()
-        //{
-        //    throw new NotImplementedException();
-        //}
+            var castModels = new CastResponseModel
+            {
+                Id = castDetail.Id,
+                Name = castDetail.Name,
+                Gender = castDetail.Gender,
 
-        //public Cast GetCast(int id)
-        //{
-        //    throw new NotImplementedException();
-        //}
+                ProfilePath = castDetail.ProfilePath
+            };
 
-        //public int InsertCast(Cast entity)
-        //{
-        //    throw new NotImplementedException();
-        //}
 
-        //public int UpdateCast(int id)
-        //{
-        //    throw new NotImplementedException();
-        //}
+            return castModels;
+        }
     }
 }

@@ -2,6 +2,7 @@
 using ApplicationCore.Contracts.Repository;
 using Infrastructure.Repository;
 using ApplicationCore.Entities;
+using ApplicationCore.Contracts.Services;
 
 
 namespace Movieshop.API.Controller
@@ -10,37 +11,73 @@ namespace Movieshop.API.Controller
     [ApiController]
     public class MovieController : ControllerBase
     {
-        IMovieRepository _movieRepository;
-        public MovieController(IMovieRepository movieRepository)
+        private readonly IMovieService _movieService;
+        public MovieController(IMovieService movieService)
         {
-            _movieRepository = movieRepository;
+            _movieService = movieService;
+
         }
 
-        [Route("{id}/name/{name}")]
-        public IActionResult GetById(int id, string name)
+
+        [HttpGet]
+        [Route("")]
+        // http://localhost:73434/api/movies?pagesize=30&page=2&title=ave
+        public IActionResult GetMoviesByPagination([FromQuery] int pageSize = 30, [FromQuery] int page = 1, string title = "")
         {
-            return Ok($"{id} - {name}");
+            var movies = _movieService.GetMoviesByPagination(pageSize, page, title);
+            if (movies == null || movies.Count == 0)
+            {
+                return NotFound($"no movies found for your search term {title}");
+            }
+            return Ok(movies);
         }
 
-        [Route("byquery")]
-        public IActionResult GetByQuery(int id, string name)
+        [HttpGet]
+        [Route("toprevenue")]
+        public IActionResult GetTopRevenueMovies()
         {
-            return Ok(name);
+            var movies = _movieService.GetTop30GrossingMovies();
+
+            if (!movies.Any())
+            {
+                return NotFound();
+            }
+
+            return Ok(movies);
         }
-
-        [Route("byBody")]
-        public IActionResult GetData(Genre g)
+        [HttpGet]
+        [Route("{id:int}")]
+        public IActionResult Details(int id)
         {
-            string str = "";
-            str += g.Name;
+            var movie = _movieService.GetMovieDetails(id);
 
-            return Ok("Result = " + str);
+            if (movie == null)
+                return NotFound();
+            return Ok(movie);
         }
-
-        [Route("byboth")]
-        public IActionResult GetByBoth([FromQuery] int rating, [FromForm] Genre g, [FromHeader] string jwt)
+        [HttpGet]
+        [Route("toprated")]
+        public IActionResult GetAllMovies()
         {
-            return Ok(rating + " " + g.Name + " " + jwt);
+            var movies = _movieService.GetTop30GRatedMovies();
+
+            if (!movies.Any() || movies.Count == 0)
+            {
+                return NotFound();
+            }
+            return Ok(movies);
+        }
+        [HttpGet]
+        [Route("genre/{id:int}")]
+        public IActionResult GetMovieByGenreId(int id)
+        {
+            var genreMovies = _movieService.MoviesSameGenre(id);
+
+            if (!genreMovies.Any())
+            {
+                return NotFound();
+            }
+            return Ok(genreMovies);
         }
     }
 }

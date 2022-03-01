@@ -5,10 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using ApplicationCore.Entities;
 using ApplicationCore.Contracts.Repository;
+using Infrastructure.Data;
 
 namespace Infrastructure.Repository
 {
-    internal class ReportRepository
+    public class ReportRepository
     {
+        public ReportRepository(MovieshopDBContext _con)
+        {
+
+        }
     }
 }
