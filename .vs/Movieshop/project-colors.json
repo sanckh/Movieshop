@@ -1,0 +1,31 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "32d73f61-6003-478a-8ed3-cba273ed3d61": {
+      "ProjectGuid": "32d73f61-6003-478a-8ed3-cba273ed3d61",
+      "DisplayName": "Infrastructure",
+      "ColorIndex": 0
+    },
+    "519eecba-0a32-4ab1-b33e-6c01c2b3c716": {
+      "ProjectGuid": "519eecba-0a32-4ab1-b33e-6c01c2b3c716",
+      "DisplayName": "ApplicationCore",
+      "ColorIndex": 1
+    },
+    "40f285a1-785c-41e5-813b-905e8a85334f": {
+      "ProjectGuid": "40f285a1-785c-41e5-813b-905e8a85334f",
+      "DisplayName": "Movieshop.API",
+      "ColorIndex": 2
+    },
+    "f61d83d5-c182-4e18-8200-60f8ce48fa9b": {
+      "ProjectGuid": "f61d83d5-c182-4e18-8200-60f8ce48fa9b",
+      "DisplayName": "MovieshopMVC",
+      "ColorIndex": 3
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 4
+}
