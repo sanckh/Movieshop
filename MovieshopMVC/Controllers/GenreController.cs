@@ -14,6 +14,8 @@ namespace MovieshopMVC.Controllers
         }
         public IActionResult Index()
         {
+            ViewBag.CompanyName = "Antra";
+            ViewData["CurrentDate"] = DateTime.Now;
             var data = _genreService.GetAllGenres();
             return View(data);
         }
@@ -31,6 +33,18 @@ namespace MovieshopMVC.Controllers
                 return RedirectToAction("Index");
             }
             return View(model);
+        }
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                _genreService.DeleteGenre(id);
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Index");
+            }
         }
     }
 }

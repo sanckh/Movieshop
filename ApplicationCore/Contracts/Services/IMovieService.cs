@@ -14,7 +14,9 @@ namespace ApplicationCore.Contracts.Services
         MovieDetailsResponseModel GetMovieDetails(int id);
         List<MovieCardResponseModel> MoviesSameGenre(int id);
         PagedResultSet<MovieCardResponseModel> GetMoviesByPagination(int pageSize, int page, string title);
-
+        void AddMovie(MovieCreateRequestModel model);
+        void DeleteMovie(int id);
+        void UpdateMovie(MovieCreateRequestModel model);
 
     }
 }

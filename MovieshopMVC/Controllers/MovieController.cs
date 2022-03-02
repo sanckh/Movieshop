@@ -18,6 +18,13 @@ namespace MovieshopMVC.Controllers
             return View(movies);
         }
         [HttpGet]
+        public IActionResult Genre(int id)
+        {
+            var data = _movieService.MoviesSameGenre(id);
+            return View(data);
+        }
+
+        [HttpGet]
         public IActionResult Create()
         {
             return View();
@@ -27,14 +34,13 @@ namespace MovieshopMVC.Controllers
         {
             try
             {
-               // _movieService.AddMovie(model); //add from movie service class
+                _movieService.AddMovie(model);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
                 return View(model);
             }
-            
         }
     }
 }

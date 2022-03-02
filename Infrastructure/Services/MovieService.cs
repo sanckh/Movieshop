@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ApplicationCore.Contracts.Repository;
 using ApplicationCore.Contracts.Services;
 using ApplicationCore.Models;
+using ApplicationCore.Entities;
 
 namespace Infrastructure.Services
 {
@@ -16,6 +17,35 @@ namespace Infrastructure.Services
         public MovieService(IMovieRepository movierRepository)
         {
             _movieRepository = movierRepository;
+        }
+
+        public void AddMovie(MovieCreateRequestModel model)
+        {
+            Movie movie = new Movie();
+            if (model != null)
+            {
+                movie.BackdropUrl = model.BackdropUrl;
+                movie.Title = model.Title;
+                movie.Budget = model.Budget;
+                movie.ImdbUrl = model.ImdbUrl;
+                movie.OriginalLanguage = model.OriginalLanguage;
+                movie.Overview = model.Overview;
+                movie.PosterUrl = model.PosterUrl;
+                movie.Price = model.Price;
+                movie.ReleaseDate = model.ReleaseDate;
+                movie.Revenue = model.Revenue;
+                movie.RunTime = model.RunTime;
+                movie.Tagline = model.Tagline;
+                movie.Title = model.Title;
+                movie.TmdbUrl = model.TmdbUrl;
+                _movieRepository.Insert(movie);
+
+            }
+        }
+
+        public void DeleteMovie(int id)
+        {
+            _movieRepository.Delete(id);
         }
 
         public MovieDetailsResponseModel GetMovieDetails(int id)
@@ -131,6 +161,29 @@ namespace Infrastructure.Services
                 });
             }
             return genreModel;
+        }
+        public void UpdateMovie(MovieCreateRequestModel model)
+        {
+            Movie movie = new Movie();
+            if (model != null)
+            {
+                movie.BackdropUrl = model.BackdropUrl;
+                movie.Title = model.Title;
+                movie.Budget = model.Budget;
+                movie.ImdbUrl = model.ImdbUrl;
+                movie.OriginalLanguage = model.OriginalLanguage;
+                movie.Overview = model.Overview;
+                movie.PosterUrl = model.PosterUrl;
+                movie.Price = model.Price;
+                movie.ReleaseDate = model.ReleaseDate;
+                movie.Revenue = model.Revenue;
+                movie.RunTime = model.RunTime;
+                movie.Tagline = model.Tagline;
+                movie.Title = model.Title;
+                movie.TmdbUrl = model.TmdbUrl;
+                _movieRepository.Update(movie);
+
+            }
         }
     }
 }

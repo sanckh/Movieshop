@@ -16,7 +16,6 @@ namespace ApplicationCore.Models
         public string Title { get; set; }
         [Required(ErrorMessage = "Overview is required")]
         public string Overview { get; set; }
-      
         public string Tagline { get; set; }
         public decimal? Revenue { get; set; }
         public decimal? Budget { get; set; }

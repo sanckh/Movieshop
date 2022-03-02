@@ -8,19 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Daddy\\.nuget\\packages\\": {}
+    "C:\\Users\\Corey\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Daddy\\source\\repos\\Movieshop\\ApplicationCore\\ApplicationCore.csproj",
+      "projectUniqueName": "C:\\Users\\Corey\\Source\\Repos\\Movieshop\\ApplicationCore\\ApplicationCore.csproj",
       "projectName": "ApplicationCore",
-      "projectPath": "C:\\Users\\Daddy\\source\\repos\\Movieshop\\ApplicationCore\\ApplicationCore.csproj",
-      "packagesPath": "C:\\Users\\Daddy\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Daddy\\source\\repos\\Movieshop\\ApplicationCore\\obj\\",
+      "projectPath": "C:\\Users\\Corey\\Source\\Repos\\Movieshop\\ApplicationCore\\ApplicationCore.csproj",
+      "packagesPath": "C:\\Users\\Corey\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Corey\\Source\\Repos\\Movieshop\\ApplicationCore\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Daddy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Corey\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -60,7 +60,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }
