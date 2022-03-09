@@ -12,12 +12,12 @@ namespace ApplicationCore.Contracts.Repository
 {
     public interface IMovieRepository : IRepository<Movie>
     {
-        List<Movie> Get30HighestGrossingMovies();
-        List<Movie> Get30HighestRatedMovies();
-        decimal GetMovieRating(int id);
-        List<Movie> GetMoviesSameGenre(int id);
+        Task<List<Movie>> Get30HighestGrossingMoviesAsync();
+        Task<List<Movie>> Get30HighestRatedMoviesAsync();
+        Task<decimal> GetMovieRatingAsync(int id);
+        Task<List<Movie>> GetMoviesSameGenreAsync(int id);
 
-        PagedResultSet<Movie> GetMoviesByTitle(int pageSize = 30, int page = 1, string title = "");
+        Task<PagedResultSet<Movie>> GetMoviesByTitleAsync(int pageSize = 30, int page = 1, string title = "");
 
 
 

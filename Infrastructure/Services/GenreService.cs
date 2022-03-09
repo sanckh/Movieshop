@@ -18,13 +18,13 @@ namespace Infrastructure.Services
             genreRepository = _gen;
         }
 
-        public IEnumerable<GenreModel> GetAllGenres()
+        public async Task<IEnumerable<GenreModel>> GetAllGenresAsync()
         {
-            var data = genreRepository.GetAll();
-            if(data != null)
+            var data = await genreRepository.GetAllAsync();
+            if (data != null)
             {
                 List<GenreModel> model = new List<GenreModel>();
-                foreach(var item in data)
+                foreach (var item in data)
                 {
                     GenreModel m = new GenreModel();
                     m.Id = item.Id;
@@ -35,24 +35,25 @@ namespace Infrastructure.Services
             }
             return null;
         }
-        public int InsertGenre(GenreModel model)
+
+        public async Task<int> InsertGenreAsync(GenreModel model)
         {
 
             Genre g = new Genre();
 
             g.Name = model.Name;
-            return genreRepository.Insert(g);
+            return await genreRepository.InsertAsync(g);
 
         }
-        public int DeleteGenre(int id)
+        public async Task<int> DeleteGenreAsync(int id)
         {
-            return genreRepository.Delete(id);
+            return await genreRepository.DeleteAsync(id);
         }
 
-        public int UpdateGenre(GenreModel model)
+        public async Task<int> UpdateGenreAsync(GenreModel model)
         {
             Genre g = new Genre() { Id = model.Id, Name = model.Name };
-            return genreRepository.Update(g);
+            return await genreRepository.UpdateAsync(g);
         }
     }
 }

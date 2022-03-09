@@ -17,13 +17,13 @@ namespace Infrastructure.Repository
         {
             _db = _con;
         }
-        public int Delete(int id)
+        public async Task<int> DeleteAsync(int id)
         {
-            var entity = _db.Set<T>().Find(id);
+            var entity = await _db.Set<T>().FindAsync(id);
             if(entity != null)
             {
                 _db.Set<T>().Remove(entity);
-                _db.SaveChanges();
+                _db.SaveChangesAsync();
                 return 1;
             }
             else
@@ -34,33 +34,34 @@ namespace Infrastructure.Repository
 
         }
 
-        public IEnumerable<T> GetAll()
+        public async Task<IEnumerable<T>> GetAllAsync()
         {
-            return _db.Set<T>().ToList();
+            return await _db.Set<T>().ToListAsync();
         }
 
-        public IEnumerable<T> GetByCondition(Expression<Func<T, bool>> filter)
+        public async Task<IEnumerable<T>> GetByConditionAsync(Expression<Func<T, bool>> filter)
         {
-            return _db.Set<T>().Where(filter);
+            return await _db.Set<T>().Where(filter).ToListAsync();
         }
 
-        public T GetById(int id)
+        public async Task<T> GetByIdAsync(int id)
         {
-            return _db.Set<T>().Find(id);
-            
+            return await _db.Set<T>().FindAsync(id);
+
         }
 
-        public int Insert(T entity)
+        public async Task<int> InsertAsync(T entity)
         {
             _db.Set<T>().Add(entity);
-            _db.SaveChanges();
+            await _db.SaveChangesAsync();
             return 1;
         }
 
-        public int Update(T entity)
+
+        public async Task<int> UpdateAsync(T entity)
         {
             _db.Entry(entity).State = EntityState.Modified;
-            _db.SaveChanges();
+            await _db.SaveChangesAsync();
             return 1;
         }
     }

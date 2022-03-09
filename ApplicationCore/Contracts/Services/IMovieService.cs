@@ -9,14 +9,14 @@ namespace ApplicationCore.Contracts.Services
 {
     public interface IMovieService
     {
-        List<MovieCardResponseModel> GetTop30GrossingMovies();
-        List<MovieCardResponseModel> GetTop30GRatedMovies();
-        MovieDetailsResponseModel GetMovieDetails(int id);
-        List<MovieCardResponseModel> MoviesSameGenre(int id);
-        PagedResultSet<MovieCardResponseModel> GetMoviesByPagination(int pageSize, int page, string title);
-        void AddMovie(MovieCreateRequestModel model);
-        void DeleteMovie(int id);
-        void UpdateMovie(MovieCreateRequestModel model);
+        Task<List<MovieCardResponseModel>> GetTop30GrossingMoviesAsync();
+        Task<List<MovieCardResponseModel>> GetTop30GRatedMoviesAsync();
+        Task<MovieDetailsResponseModel> GetMovieDetailsAsync(int id);
+        Task<List<MovieCardResponseModel>> MoviesSameGenreAsync(int id);
+        Task<PagedResultSet<MovieCardResponseModel>> GetMoviesByPaginationAsync(int pageSize, int page, string title);
+        Task AddMovieAsync(MovieCreateRequestModel model);
+        Task DeleteMovieAsync(int id);
+        Task UpdateMovieAsync(MovieCreateRequestModel model);
 
     }
 }
