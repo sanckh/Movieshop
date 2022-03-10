@@ -16,7 +16,7 @@ namespace MovieshopMVC.Controllers
         {
             ViewBag.CompanyName = "Antra";
             ViewData["CurrentDate"] = DateTime.Now;
-            var data = _genreService.GetAllGenres();
+            var data = _genreService.GetAllGenresAsync();
             return View(data);
         }
         [HttpGet]
@@ -29,7 +29,7 @@ namespace MovieshopMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                _genreService.InsertGenre(model);
+                _genreService.InsertGenreAsync(model);
                 return RedirectToAction("Index");
             }
             return View(model);
@@ -38,7 +38,7 @@ namespace MovieshopMVC.Controllers
         {
             try
             {
-                _genreService.DeleteGenre(id);
+                _genreService.DeleteGenreAsync(id);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)

@@ -12,33 +12,11 @@ namespace Infrastructure.Repository
 {
     public class PurchaseRepository : BaseRepository<Purchase>, IPurchaseRepository
     {
+        MovieshopDBContext _db;
         public PurchaseRepository(MovieshopDBContext _con) : base(_con)
         {
-
+            _db = _con;
         }
-        public Purchase GetByCondition(Expression<Predicate<Purchase>> filter)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int Insert(Purchase entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int Update(Purchase entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        IEnumerable<Purchase> IRepository<Purchase>.GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        Purchase IRepository<Purchase>.GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

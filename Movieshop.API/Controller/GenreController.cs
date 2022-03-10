@@ -15,9 +15,9 @@ namespace Movieshop.API.Controller
             genreService = gen;
         }
         [Route("list")]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAllAsync()
         {
-            var data = genreService.GetAllGenres();
+            var data = await genreService.GetAllGenresAsync();
             if(data == null)
             {
                 return NotFound("No Genre Available");
@@ -25,26 +25,26 @@ namespace Movieshop.API.Controller
             return Ok(data);
         }
         [HttpPost]
-
-        public IActionResult Post(GenreModel model)
+        [Route("add")]
+        public async Task<IActionResult> Post(GenreModel model)
         {
-            if (genreService.InsertGenre(model) > 0)
+            if (await genreService.InsertGenreAsync(model) > 0)
                 return Ok(model);
             return BadRequest();
         }
         [HttpDelete]
         [Route("{id}")]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> DeleteAsync(int id)
         {
-            if (genreService.DeleteGenre(id) > 0)
+            if (await genreService.DeleteGenreAsync(id) > 0)
                 return Ok("Genre is deleted");
             return NoContent();
         }
 
         [HttpPut]
-        public IActionResult Put(GenreModel m)
+        public async Task<IActionResult> PutAsync(GenreModel m)
         {
-            if (genreService.UpdateGenre(m) > 0)
+            if (await genreService.UpdateGenreAsync(m) > 0)
                 return Ok("Genre is updated");
             return NoContent();
         }

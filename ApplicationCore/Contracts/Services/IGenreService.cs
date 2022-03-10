@@ -10,9 +10,9 @@ namespace ApplicationCore.Contracts.Services
 {
     public interface IGenreService
     {
-        IEnumerable<GenreModel> GetAllGenres();
-        int InsertGenre(GenreModel model);
-        int DeleteGenre(int id);
-        int UpdateGenre(GenreModel model);
+        Task<IEnumerable<GenreModel>> GetAllGenresAsync();
+        Task<int> InsertGenreAsync(GenreModel model);
+        Task<int> DeleteGenreAsync(int id);
+        Task<int> UpdateGenreAsync(GenreModel model);
     }
 }

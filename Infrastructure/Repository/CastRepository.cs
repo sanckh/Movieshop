@@ -10,6 +10,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq.Expressions;
 using Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repository
 {
@@ -20,9 +21,9 @@ namespace Infrastructure.Repository
         {
             _db = _con;
         }
-        public Cast GetCast(int id)
+        public async Task<Cast> GetCastAsync(int id)
         {
-            return _db.Casts.Where(x=>x.Id == id).FirstOrDefault();
+            return await _db.Casts.Where(x => x.Id == id).FirstOrDefaultAsync();
         }
 
     }

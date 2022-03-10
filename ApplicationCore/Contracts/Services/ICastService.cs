@@ -15,6 +15,6 @@ namespace ApplicationCore.Contracts.Services
         //int DeleteCast(int id);
         //IEnumerable<Cast> GetAllCasts();
         //Cast GetCast(int id);
-        CastResponseModel GetAllCast(int id);
+        Task<CastResponseModel> GetAllCastAsync(int id);
     }
 }
