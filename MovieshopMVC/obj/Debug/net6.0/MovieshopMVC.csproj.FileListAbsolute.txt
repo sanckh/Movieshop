@@ -549,3 +549,5 @@ C:\Users\Corey\Source\Repos\Movieshop\MovieshopMVC\obj\Debug\net6.0\MovieshopMVC
 C:\Users\Corey\Source\Repos\Movieshop\MovieshopMVC\obj\Debug\net6.0\ref\MovieshopMVC.dll
 C:\Users\Corey\Source\Repos\Movieshop\MovieshopMVC\obj\Debug\net6.0\MovieshopMVC.pdb
 C:\Users\Corey\Source\Repos\Movieshop\MovieshopMVC\obj\Debug\net6.0\MovieshopMVC.genruntimeconfig.cache
+C:\Users\Corey\source\repos\Movieshop\MovieshopMVC\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\Corey\source\repos\Movieshop\MovieshopMVC\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll

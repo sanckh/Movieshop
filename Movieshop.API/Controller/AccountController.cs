@@ -1,6 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using ApplicationCore.Contracts.Services;
+using ApplicationCore.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace Movieshop.API.Controller
 {
@@ -8,30 +13,75 @@ namespace Movieshop.API.Controller
     [ApiController]
     public class AccountController : ControllerBase
     {
-        //List<AccountResponseModel> accountList;
-        //public AccountController()
-        //{
-        //    accountList = new List<AccountResponseModel>
-        //    {
-        //    };
-        //}
+        private readonly IAccountService accountService;
+        private readonly IConfiguration configuration;
+        public AccountController(IAccountService _acc, IConfiguration con)
+        {
+           accountService = _acc;
+            configuration = con;
+        }
+        [HttpPost]
+        [Route("Login")]
+        public async Task<IActionResult> Login(UserLoginRequestModel loginRequest)
+        {
+            var user = await accountService.Validate(loginRequest.Email, loginRequest.Password);
+            if (user == null)
+            {
+                return Unauthorized("Invalid Username or Password");
+            }
+            var token = GenerateJWT(user);
+            var tokenValue = new { jwt = token };
+            return Ok(tokenValue);
+        }
 
-        //public IActionResult Get()
-        //{
-        //    return Ok(accountList);
-        //}
+        [HttpPost]
+        [Route("Register")]
+        public async Task<IActionResult> Register(UserRegisterRequestModel model)
+        {
+            try
+            {
+                var result = await accountService.Register(model);
+                var response = new { Message = "Registered Successfully" };
+                return Ok(response);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
-        //[Route("{id:int}")]
-        //[HttpGet]
-        //public IActionResult Get(int id)
-        //{
-        //    return id < 1 ? BadRequest() : Ok(accountList.Where(x => x.Id == id).FirstOrDefault());
-        //}
+        private string GenerateJWT(UserLoginResponseModel model)
+        {
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.NameIdentifier, model.Id.ToString()),
+                new Claim(JwtRegisteredClaimNames.GivenName, model.FirstName),
+                new Claim(JwtRegisteredClaimNames.FamilyName, model.LastName),
+                new Claim(JwtRegisteredClaimNames.Email, model.Email),
+                new Claim(JwtRegisteredClaimNames.Birthdate, model.DateOfBirth.ToShortDateString()),
+                new Claim("language", "english")
+            };
+            var identityClaims = new ClaimsIdentity();
+            identityClaims.AddClaims(claims);
 
-        //[Route("{name}")]
-        //public IActionResult GetByName(string name)
-        //{
-        //    return string.IsNullOrEmpty(name) ? NoContent() : Ok(accountList.Where(x => x.Name == name).FirstOrDefault());
-        //}
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["PrivateKey"]));
+            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256Signature);
+            var expire = DateTime.UtcNow.AddHours(Convert.ToDouble(configuration["ExpirationHours"]));
+            var tokenHandler = new JwtSecurityTokenHandler();
+
+            var tokenDescription = new SecurityTokenDescriptor
+            {
+                Subject = identityClaims,
+                Expires = expire,
+                SigningCredentials = credentials,
+                Issuer = configuration["Issuer"],
+                Audience = configuration["Audience"]
+            };
+
+            var token = tokenHandler.CreateToken(tokenDescription);
+
+            return tokenHandler.WriteToken(token);
+
+        }
     }
 }

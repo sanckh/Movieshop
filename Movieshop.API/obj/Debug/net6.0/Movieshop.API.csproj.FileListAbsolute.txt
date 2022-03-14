@@ -337,3 +337,6 @@ C:\Users\Corey\source\repos\Movieshop\Movieshop.API\bin\Debug\net6.0\zh-Hans\Mic
 C:\Users\Corey\source\repos\Movieshop\Movieshop.API\bin\Debug\net6.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
 C:\Users\Corey\source\repos\Movieshop\Movieshop.API\bin\Debug\net6.0\runtimes\win-arm\lib\net6.0\dotnet-aspnet-codegenerator-design.exe
 C:\Users\Corey\source\repos\Movieshop\Movieshop.API\bin\Debug\net6.0\runtimes\win-arm64\lib\net6.0\dotnet-aspnet-codegenerator-design.exe
+C:\Users\Corey\source\repos\Movieshop\Movieshop.API\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Corey\source\repos\Movieshop\Movieshop.API\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\Corey\source\repos\Movieshop\Movieshop.API\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll

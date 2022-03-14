@@ -22,9 +22,9 @@ namespace Movieshop.API.Controller
         [HttpGet]
         [Route("")]
         // http://localhost:73434/api/movies?pagesize=30&page=2&title=ave
-        public IActionResult GetMoviesByPagination([FromQuery] int pageSize = 30, [FromQuery] int page = 1, string title = "")
+        public async Task<IActionResult> GetMoviesByPaginationAsync([FromQuery] int pageSize = 30, [FromQuery] int page = 1, string title = "")
         {
-            var movies = _movieService.GetMoviesByPagination(pageSize, page, title);
+            var movies = await _movieService.GetMoviesByPaginationAsync(pageSize, page, title);
             if (movies == null || movies.Count == 0)
             {
                 return NotFound($"no movies found for your search term {title}");
@@ -34,9 +34,9 @@ namespace Movieshop.API.Controller
 
         [HttpGet]
         [Route("toprevenue")]
-        public IActionResult GetTopRevenueMovies()
+        public async Task<IActionResult> GetTopRevenueMoviesAsync()
         {
-            var movies = _movieService.GetTop30GrossingMovies();
+            var movies = await _movieService.GetTop30GrossingMoviesAsync();
 
             if (!movies.Any())
             {
@@ -47,9 +47,9 @@ namespace Movieshop.API.Controller
         }
         [HttpGet]
         [Route("{id:int}")]
-        public IActionResult Details(int id)
+        public async Task<IActionResult> DetailsAsync(int id)
         {
-            var movie = _movieService.GetMovieDetails(id);
+            var movie = await _movieService.GetMovieDetailsAsync(id);
 
             if (movie == null)
                 return NotFound();
@@ -57,9 +57,9 @@ namespace Movieshop.API.Controller
         }
         [HttpGet]
         [Route("toprated")]
-        public IActionResult GetAllMovies()
+        public async Task<IActionResult> GetAllMoviesAsync()
         {
-            var movies = _movieService.GetTop30GRatedMovies();
+            var movies = await _movieService.GetTop30GRatedMoviesAsync();
 
             if (!movies.Any() || movies.Count == 0)
             {
@@ -69,9 +69,9 @@ namespace Movieshop.API.Controller
         }
         [HttpGet]
         [Route("genre/{id:int}")]
-        public IActionResult GetMovieByGenreId(int id)
+        public async Task<IActionResult> GetMovieByGenreIdAsync(int id)
         {
-            var genreMovies = _movieService.MoviesSameGenre(id);
+            var genreMovies = await _movieService.MoviesSameGenreAsync(id);
 
             if (!genreMovies.Any())
             {
